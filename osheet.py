@@ -130,8 +130,14 @@ def main(stdscr):
 
 		if ch == ord('/'):
 			matches = search(stdscr, cell_fulltext)
+			match_index = 0;
 			if 0 < len(matches):
 				(cell_y, cell_x) = match_next(matches, match_index, stdscr)
+				match_index += 1;
+		if ch == ord('n'):
+			if 0 < len(matches):
+				(cell_y, cell_x) = match_next(matches, match_index, stdscr)
+				match_index += 1;
 
 		# Quit
 
