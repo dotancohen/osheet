@@ -8,6 +8,8 @@ import time
 import re
 
 
+version = 0.1
+
 cellsize = 12
 col_sep = " | "
 col_sep_size = len(col_sep)

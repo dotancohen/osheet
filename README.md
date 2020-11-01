@@ -21,6 +21,8 @@ File formats currently supported:
 - Scroll
 - Resize columns
 - Support CSV, TSV, and LibreOffice document formats
+- Multiple sheets
+- Search across sheets
 
 
 ## Keys
@@ -41,6 +43,13 @@ File formats currently supported:
 ### Quit
 
 `q` Quit  
+
+
+## Changelog
+
+### 0.1 - 2020-11-01
+- Support opening XLS files
+- Search for arbitrary text
 
 
 ## Other applications to view spreadsheets on CLI
