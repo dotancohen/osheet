@@ -3,6 +3,7 @@
 import openpyxl
 import curses
 import time
+import re
 
 from pprint import pprint
 
@@ -32,10 +33,35 @@ def get_yx(cell_y, cell_x):
 	return (cell_y,x)
 
 
+def search(scr, cell_fulltext):
+
+	matches = [] # y,x
+
+	search_str = scr.getstr().decode("ascii")
+
+
+	for cell_y,row in enumerate(cell_fulltext):
+		for cell_x,cell in enumerate(row):
+			if not type(cell)==type("string"):
+				continue
+			if re.search(search_str, cell, re.I):
+				matches.append( (cell_y+1,cell_x+1) )
+
+	return matches
+
+
+def match_next(matches, match_index, scr):
+	(cell_y, cell_x) = matches[match_index]
+	(y,x) = get_yx(cell_y, cell_x)
+	scr.move(y, x)
+	return (cell_y, cell_x)
+
 
 def main(stdscr):
 
 	stdscr.border(0)
+	matches = []
+	match_index = 0
 
 	workbook = openpyxl.load_workbook(filename=file)
 	sheet = workbook.active
@@ -101,6 +127,11 @@ def main(stdscr):
 			del win
 			stdscr.touchwin()
 			stdscr.refresh()
+
+		if ch == ord('/'):
+			matches = search(stdscr, cell_fulltext)
+			if 0 < len(matches):
+				(cell_y, cell_x) = match_next(matches, match_index, stdscr)
 
 		# Quit
 
