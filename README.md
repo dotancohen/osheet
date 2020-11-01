@@ -27,20 +27,20 @@ File formats currently supported:
 
 ### Navigation
 
-`h` Left
-`j` Down
-`k` Up
-`l` Right
+`h` Left  
+`j` Down  
+`k` Up  
+`l` Right  
 
 ### Operations
 
-`/` Search
-`n` Next search result
-`<spacebar>` Expand cell to view full text
+`/` Search  
+`n` Next search result  
+`<spacebar>` Expand cell to view full text  
 
 ### Quit
 
-`q` Quit
+`q` Quit  
 
 
 ## Other applications to view spreadsheets on CLI
