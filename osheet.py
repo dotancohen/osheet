@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
+import sys
 import openpyxl
 import curses
 import time
 import re
 
-from pprint import pprint
-
-file = "Example.xlsx"
 
 cellsize = 12
 col_sep = " | "
@@ -57,7 +55,7 @@ def match_next(matches, match_index, scr):
 	return (cell_y, cell_x)
 
 
-def main(stdscr):
+def main(stdscr, file):
 
 	stdscr.border(0)
 	matches = []
@@ -149,4 +147,5 @@ def main(stdscr):
 
 
 if __name__=="__main__":
-	curses.wrapper(main)
+	file = sys.argv[1]
+	curses.wrapper(main, file)
