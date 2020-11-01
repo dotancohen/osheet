@@ -16,7 +16,12 @@ col_sep_size = len(col_sep)
 
 def format_row(val_orig, size):
 	val = str(val_orig) + " "*size
-	return val[0:size]
+	if size < len(str(val_orig)):
+		overflow = True
+	else:
+		overflow = False
+
+	return (val[0:size], overflow, val_orig)
 
 
 
@@ -36,9 +41,13 @@ def main(stdscr):
 			if cell==None:
 				cell=" "
 			col_effective = (col_num*(cellsize+col_sep_size)) + 2
-			text = format_row(cell, cellsize)
+			(text,overflow,text_full) = format_row(cell, cellsize)
+			if overflow:
+				cell_formatting = curses.A_UNDERLINE
+			else:
+				cell_formatting = curses.A_NORMAL
 			text += col_sep
-			stdscr.addstr(row_num, col_effective, text, curses.A_NORMAL)
+			stdscr.addstr(row_num, col_effective, text, cell_formatting)
 			col_num += 1
 
 	stdscr.refresh()

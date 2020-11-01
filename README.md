@@ -2,6 +2,7 @@
 # Known bugs
 
 - When passing the cursor outside the boundarides, crash
+- Overflowing text highlights the trailing coloum separator
 
 
 
