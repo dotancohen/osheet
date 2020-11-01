@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import sys
 import openpyxl
 import curses
@@ -147,5 +148,8 @@ def main(stdscr, file):
 
 
 if __name__=="__main__":
-	file = sys.argv[1]
-	curses.wrapper(main, file)
+	parser = argparse.ArgumentParser(description="CLI application for browsing spreadsheets")
+	parser.add_argument('file', type=str, help="Spreadsheet file to browse")
+	args = parser.parse_args()
+
+	curses.wrapper(main, args.file)
