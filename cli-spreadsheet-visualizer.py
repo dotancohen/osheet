@@ -43,8 +43,11 @@ def main(stdscr):
 
 	stdscr.refresh()
 
-	ch = stdscr.getch()
+	while True:
+		ch = stdscr.getch()
 
+		if ch == ord('q'):
+			break
 
 	return
 
