@@ -42,10 +42,25 @@ def main(stdscr):
 			col_num += 1
 
 	stdscr.refresh()
+	cursor_y = 2
+	cursor_x = 2
+	stdscr.move(cursor_y, cursor_x)
 
 	while True:
 		ch = stdscr.getch()
 
+		if ch == ord('h'):
+			cursor_x -= cellsize + col_sep_size
+			stdscr.move(cursor_y, cursor_x)
+		if ch == ord('j'):
+			cursor_y += 1
+			stdscr.move(cursor_y, cursor_x)
+		if ch == ord('k'):
+			cursor_y -=1
+			stdscr.move(cursor_y, cursor_x)
+		if ch == ord('l'):
+			cursor_x += cellsize + col_sep_size
+			stdscr.move(cursor_y, cursor_x)
 		if ch == ord('q'):
 			break
 
